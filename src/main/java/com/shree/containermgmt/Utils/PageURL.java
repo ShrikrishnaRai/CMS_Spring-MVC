@@ -11,5 +11,7 @@ package com.shree.containermgmt.Utils;
  */
 public class PageURL {
 
+    public static final String LOGIN_PAGE = "index.jsp";
     public static final String SIGN_UP_PAGE = "signUp.jsp";
+    public static final String HOME_PAGE = "home.jsp";
 }

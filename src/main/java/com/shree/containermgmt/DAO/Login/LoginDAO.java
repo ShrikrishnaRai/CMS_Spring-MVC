@@ -5,10 +5,14 @@
  */
 package com.shree.containermgmt.DAO.Login;
 
+import org.springframework.stereotype.Component;
+
 /**
  *
  * @author cri_r
  */
+@Component
 public interface LoginDAO {
-    void login(String email,String password);
+
+    boolean login(String email, String password);
 }

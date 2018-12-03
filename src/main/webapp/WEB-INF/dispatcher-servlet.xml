@@ -22,17 +22,29 @@ http://www.springframework.org/schema/context/spring-context-4.3.xsd">
         <property name="suffix" value="" />
     </bean>
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">    
-        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>    
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>    
         <property name="url" value="jdbc:mysql://localhost:3306/containerManagement"></property>    
         <property name="username" value="cri"></property>    
         <property name="password" value="root"></property>    
     </bean> 
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">    
         <property name="dataSource" ref="dataSource"></property>    
-    </bean>   
-    <bean id="signUpDaoServicesIMPL" class="com.shree.containermgmt.Services.SignUp.SignUpDaoServicesIMPL">
+    </bean> 
+
+    <bean id="SignUpDaoServicesIMPL" class="com.shree.containermgmt.Services.SignUp.SignUpDaoServicesIMPL">
+        <constructor-arg ref="SignUpDaoIMPL"/>
+    </bean> 
+    <bean id="LoginDaoServicesIMPL" class="com.shree.containermgmt.Services.Login.LoginDaoServicesIMPL" >
+        <constructor-arg ref="LoginDaoIMPL"/>
+    </bean>  
+    <bean id="UserDaoServicesIMPL" class="com.shree.containermgmt.Services.User.UserDaoServicesIMPL">
+        <constructor-arg ref="UserDaoIMPL"/>
+    </bean>
+    <bean id="LoginDaoIMPL" class="com.shree.containermgmt.DAO.Login.LoginDaoIMPL"/>
+    <bean id="UserDaoIMPL" class="com.shree.containermgmt.DAO.User.UserDaoIMPL"/>
+    <bean id="SignUpDaoIMPL" class="com.shree.containermgmt.DAO.SignUp.SignUpDaoIMPL" >
         <property name="jdbcTemplate_dco" ref="jdbcTemplate"/>
     </bean>
-
-
+   
+   
 </beans>

@@ -5,9 +5,19 @@
  */
 package com.shree.containermgmt.Controller.Login;
 
-import static com.shree.containermgmt.Utils.PageURL.SIGN_UP_PAGE;
+import com.shree.containermgmt.Model.Login.LoginDto;
+import com.shree.containermgmt.Model.SignUp.SignUpDto;
+import com.shree.containermgmt.Services.Login.LoginDaoServicesIMPL;
+import com.shree.containermgmt.Services.User.UserDaoServicesIMPL;
+import static com.shree.containermgmt.Utils.PageURL.HOME_PAGE;
+import static com.shree.containermgmt.Utils.PageURL.LOGIN_PAGE;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
@@ -16,13 +26,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class LoginController {
 
-    @RequestMapping(value = "/")
-    public String signUp() {
-        return SIGN_UP_PAGE;
+    @Autowired
+    LoginDaoServicesIMPL loginDaoServicesIMPL;
+    @Autowired
+    UserDaoServicesIMPL userDaoServicesIMPL;
+    String username;
+    String password;
+
+    @RequestMapping(value = "/loginUser", method = RequestMethod.POST)
+    public String loginUser(@ModelAttribute("LoginDto") LoginDto loginDto, Model model) {
+        if (loginDaoServicesIMPL.login(loginDto.getEmail(), loginDto.getPassword())) {
+            username = loginDto.getEmail();
+            password = loginDto.getPassword();
+            model.addAttribute("user", userDaoServicesIMPL.userInfo());
+            return HOME_PAGE;
+        } else {
+            model.addAttribute("message", "User Verification Failed");
+            return LOGIN_PAGE;
+        }
     }
-    
-    @RequestMapping(value="/signUp")
-    public String signUUp(){
-        return SIGN_UP_PAGE;
+
+    @RequestMapping(value = "/saveReceipt", method = RequestMethod.POST)
+    public String saveReceipt(@ModelAttribute("SignUpDto") SignUpDto signUpDto, Model model) {
+        userDaoServicesIMPL.saveReceipt(signUpDto, username, password);
+        return HOME_PAGE;
     }
+
 }

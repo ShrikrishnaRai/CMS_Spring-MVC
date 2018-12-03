@@ -7,17 +7,20 @@ package com.shree.containermgmt.DAO.SignUp;
 
 import com.shree.containermgmt.Model.SignUp.SignUpDto;
 import static com.shree.containermgmt.Utils.QueryUtil.SIGN_UP;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author cri_r
  */
+@Component
 public class SignUpDaoIMPL implements SignUpDAO {
 
     JdbcTemplate jdbcTemplate_dco;
 
-    public void setTemplate_dco(JdbcTemplate jdbcTemplate_dco) {
+    public void setJdbcTemplate_dco(JdbcTemplate jdbcTemplate_dco) {
         this.jdbcTemplate_dco = jdbcTemplate_dco;
     }
 

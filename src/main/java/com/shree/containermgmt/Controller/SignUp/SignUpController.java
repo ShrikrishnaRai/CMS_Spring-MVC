@@ -25,7 +25,7 @@ public class SignUpController {
     @Autowired
     private SignUpDaoServicesIMPL signUpDaoServicesIMPL;
 
-    @RequestMapping(value = "/SignUp/Users", method = RequestMethod.POST)
+    @RequestMapping(value = "/Create/Users", method = RequestMethod.POST)
     public ModelAndView signUp(@ModelAttribute("SignUpDto") SignUpDto signUpDto) {
         signUpDaoServicesIMPL.signUp(signUpDto);
         return new ModelAndView(SIGN_UP_PAGE);

@@ -12,7 +12,7 @@
         <title>Sign Up</title>
     </head>
     <body>
-        <form method="POST" action="/SignUp/Users">
+        <form method="POST" action="Create/Users">
             <div>
                 <label>Enter Your Detail's</label>
                 <div>
@@ -25,11 +25,11 @@
                 </div>
                 <div>
                     <label>Email::</label>
-                    <input type="text" name="lastName" placeholder="Email"/>
+                    <input type="email" name="email" placeholder="Email"/>
                 </div>              
                 <div>
                     <label>Phone::</label>
-                    <input type="text" name="phone" placeholder="Phone No"/>
+                    <input type="number" name="phone" placeholder="Phone No"/>
                 </div>
                 <br/>
                 <div>
@@ -55,9 +55,13 @@
                     </select>
                 </div>
             </div>
+            <div>
+                <label>Password:</label>
+                <input type="password" name="password" placeholder="Password"/>
+            </div>
             <input type='submit' value="SignUp"/>
         </form>
 
 
-</body>
+    </body>
 </html>

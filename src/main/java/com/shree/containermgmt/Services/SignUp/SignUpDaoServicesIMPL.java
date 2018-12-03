@@ -8,24 +8,27 @@ package com.shree.containermgmt.Services.SignUp;
 import com.shree.containermgmt.DAO.SignUp.SignUpDAO;
 import com.shree.containermgmt.DAO.SignUp.SignUpDaoIMPL;
 import com.shree.containermgmt.Model.SignUp.SignUpDto;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author cri_r
  */
+@Component
 public class SignUpDaoServicesIMPL implements SignUpDAOServices {
 
-    SignUpDAO signUpDao = new SignUpDaoIMPL();
-    private JdbcTemplate jdbcTemplate_dco;
+    @Autowired
+    SignUpDaoIMPL SignUpDaoIMPL;
 
-    public void setJdbcTemplate_dco(JdbcTemplate jdbcTemplate_dco) {
-        jdbcTemplate_dco = this.jdbcTemplate_dco;
+    public SignUpDaoServicesIMPL(SignUpDaoIMPL SignUpDaoIMPL) {
+        this.SignUpDaoIMPL = SignUpDaoIMPL;
     }
 
     @Override
     public void signUp(SignUpDto signUpDto) {
-        signUpDao.signUp(signUpDto);
+        SignUpDaoIMPL.signUp(signUpDto);
     }
 
 }

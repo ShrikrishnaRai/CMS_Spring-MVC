@@ -6,11 +6,14 @@
 package com.shree.containermgmt.Services.SignUp;
 
 import com.shree.containermgmt.Model.SignUp.SignUpDto;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author cri_r
  */
+
+@Component
 public interface SignUpDAOServices {
     void signUp(SignUpDto signUpDto);
 }

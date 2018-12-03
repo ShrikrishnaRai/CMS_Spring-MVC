@@ -21,6 +21,15 @@ public class SignUpDto {
     private String city;
     private String role;
     private String password;
+    private String goods;
+
+    public String getGoods() {
+        return goods;
+    }
+
+    public void setGoods(String goods) {
+        this.goods = goods;
+    }
 
     public int getId() {
         return id;
