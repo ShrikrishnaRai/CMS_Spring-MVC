@@ -8,6 +8,8 @@ package com.shree.containermgmt.Services.User;
 import com.shree.containermgmt.DAO.User.UserDAO;
 import com.shree.containermgmt.DAO.User.UserDaoIMPL;
 import com.shree.containermgmt.Model.SignUp.SignUpDto;
+import com.shree.containermgmt.Model.User.UserDto;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -22,22 +24,18 @@ public class UserDaoServicesIMPL implements UserDAOServices {
     @Autowired
     UserDaoIMPL UserDaoIMPL;
 
-    public UserDaoServicesIMPL(UserDaoIMPL UserDaoIMPL) {
-        this.UserDaoIMPL = UserDaoIMPL;
+    public UserDaoServicesIMPL(UserDaoIMPL userDaoIMPL) {
+        this.UserDaoIMPL = userDaoIMPL;
     }
 
     @Override
-    public List<SignUpDto> userInfo() {
+    public List<UserDto> userInfo() {
         return UserDaoIMPL.userInfo();
     }
 
-    public List<SignUpDto> userInfo(String email, String password) {
-        return UserDaoIMPL.userInfo(email, password);
-    }
-
     @Override
-    public void saveReceipt(SignUpDto signUpDto,String email,String password) {
-        UserDaoIMPL.saveReceipt(signUpDto,email,password);
+    public UserDto loggedUserInfo(String email, String password) {
+        return UserDaoIMPL.loggedUserInfo(email, password);
     }
 
 }

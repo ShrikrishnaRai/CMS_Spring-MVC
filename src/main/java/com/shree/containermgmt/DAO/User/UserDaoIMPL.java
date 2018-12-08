@@ -6,6 +6,7 @@
 package com.shree.containermgmt.DAO.User;
 
 import com.shree.containermgmt.Model.SignUp.SignUpDto;
+import com.shree.containermgmt.Model.User.UserDto;
 import com.shree.containermgmt.Utils.DbUtil;
 import com.shree.containermgmt.Utils.QueryUtil;
 import static com.shree.containermgmt.Utils.QueryUtil.SAVE_RECEIPT;
@@ -27,82 +28,59 @@ import org.springframework.stereotype.Component;
 public class UserDaoIMPL implements UserDAO {
 
     PreparedStatement ps_Dco;
+    SignUpDto signUpDto = new SignUpDto();
+    UserDto userDto = new UserDto();
 
     @Override
-    public List<SignUpDto> userInfo() {
-        List<SignUpDto> signUpDtoList = new ArrayList<>();
-        SignUpDto signUpDto = new SignUpDto();
+    public List<UserDto> userInfo() {
+        List<UserDto> userDtoList = new ArrayList<>();
         try {
             ps_Dco = DbUtil.getConnection().prepareStatement(QueryUtil.RECEIVER_INFO);
             ResultSet rs_Dco = ps_Dco.executeQuery();
             while (rs_Dco.next()) {
-                signUpDto.setId(rs_Dco.getInt("id"));
-                signUpDto.setFirstName(rs_Dco.getString("firstName"));
-                signUpDto.setLastName(rs_Dco.getString("lastName"));
-                signUpDto.setCity(rs_Dco.getString("city"));
-                signUpDto.setCountry(rs_Dco.getString("country"));
-                signUpDto.setEmail(rs_Dco.getString("email"));
-                signUpDto.setState(rs_Dco.getString("state"));
-                signUpDto.setPhone(rs_Dco.getString("phone"));
-                signUpDtoList.add(signUpDto);
+                UserDto userDto = new UserDto();
+                userDto.setId(rs_Dco.getInt("id"));
+                userDto.setFirstName(rs_Dco.getString("firstName"));
+                userDto.setLastName(rs_Dco.getString("lastName"));
+                userDto.setEmail(rs_Dco.getString("email"));
+                userDto.setPhone(rs_Dco.getString("phone"));
+                userDto.setCity(rs_Dco.getString("city"));
+                userDto.setCountry(rs_Dco.getString("country"));
+                userDto.setState(rs_Dco.getString("state"));
+                userDtoList.add(userDto);
             }
         } catch (SQLException ex) {
             Logger.getLogger(UserDaoIMPL.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(UserDaoIMPL.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return signUpDtoList;
+        return userDtoList;
     }
 
-    public List<SignUpDto> userInfo(String email, String password) {
-        List<SignUpDto> signUpDtoList = new ArrayList<>();
-        SignUpDto signUpDto = new SignUpDto();
+    @Override
+    public UserDto loggedUserInfo(String email, String password) {
         try {
             ps_Dco = DbUtil.getConnection().prepareStatement(QueryUtil.LOGIN);
             ps_Dco.setString(1, email);
             ps_Dco.setString(2, password);
             ResultSet rs_Dco = ps_Dco.executeQuery();
             while (rs_Dco.next()) {
-                signUpDto.setId(rs_Dco.getInt("id"));
-                signUpDto.setFirstName(rs_Dco.getString("firstName"));
-                signUpDto.setLastName(rs_Dco.getString("lastName"));
-                signUpDto.setCity(rs_Dco.getString("city"));
-                signUpDto.setCountry(rs_Dco.getString("country"));
-                signUpDto.setEmail(rs_Dco.getString("email"));
-                signUpDto.setState(rs_Dco.getString("state"));
-                signUpDto.setPhone(rs_Dco.getString("phone"));
-                signUpDtoList.add(signUpDto);
+                UserDto userDto = new UserDto();
+                userDto.setId(rs_Dco.getInt("id"));
+                userDto.setFirstName(rs_Dco.getString("firstName"));
+                System.out.println("DAO::"+rs_Dco.getString("firstName"));
+                userDto.setLastName(rs_Dco.getString("lastName"));
+                userDto.setEmail(rs_Dco.getString("email"));
+                userDto.setPhone(rs_Dco.getString("phone"));
+                userDto.setCity(rs_Dco.getString("city"));
+                userDto.setCountry(rs_Dco.getString("country"));
+                userDto.setState(rs_Dco.getString("state"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(UserDaoIMPL.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(UserDaoIMPL.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return signUpDtoList;
-    }
-
-    @Override
-    public void saveReceipt(SignUpDto signUpDto,String email,String password) {
-        List<SignUpDto> signUpDtoList = new ArrayList<>();
-        signUpDtoList = userInfo("email", "password");
-        try {
-            ps_Dco = DbUtil.getConnection().prepareStatement(QueryUtil.SAVE_RECEIPT);
-            ps_Dco.setString(1, signUpDto.getFirstName());
-            ps_Dco.setString(2, signUpDto.getLastName());
-            ps_Dco.setString(3, signUpDto.getEmail());
-            ps_Dco.setString(4, signUpDto.getPhone());
-            for (int i = 1; i <= signUpDtoList.size(); i++) {
-                ps_Dco.setString(5, signUpDtoList.get(i).getFirstName());
-                ps_Dco.setString(6, signUpDtoList.get(i).getLastName());
-                ps_Dco.setString(7, signUpDtoList.get(i).getEmail());
-                ps_Dco.setString(8, signUpDtoList.get(i).getPhone());
-                ps_Dco.setString(9, signUpDtoList.get(i).getGoods());
-            }
-            ps_Dco.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(UserDaoIMPL.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(UserDaoIMPL.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        return userDto;
     }
 }

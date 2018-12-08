@@ -30,7 +30,8 @@
             </div>
             <input type="submit" value="Login" class="btn btn-primary"/>
         </form>
-        <a>Sign Up Here</a>
+        <a href="<c:url value="/signUpPage"/>">Sign Up</a>
+
         <br/>
 
     </body>

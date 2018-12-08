@@ -1,6 +1,7 @@
 package com.shree.containermgmt.DAO.User;
 
 import com.shree.containermgmt.Model.SignUp.SignUpDto;
+import com.shree.containermgmt.Model.User.UserDto;
 import java.util.List;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +17,7 @@ import org.springframework.stereotype.Component;
 @Component
 public interface UserDAO {
 
-    List<SignUpDto> userInfo();
+    List<UserDto> userInfo();
 
-    void saveReceipt(SignUpDto signUpDto,String email,String password);
+    UserDto loggedUserInfo(String email, String password);
 }

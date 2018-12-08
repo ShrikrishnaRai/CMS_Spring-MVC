@@ -11,8 +11,9 @@ package com.shree.containermgmt.Utils;
  */
 public class QueryUtil {
 
-    public static final String SIGN_UP = "insert into users(firstName,lastName,email,phone,country,state,city,role,password) values (?,?,?,?,?,?,?,?,?)";
+    public static final String SIGN_UP = "insert into users(firstName,lastName,email,phone,country,state,city,role,password) values (?,?,?,?,?,?,?,?)";
     public static final String LOGIN = "select * from users where email=? and password=?";
     public static final String RECEIVER_INFO = "select * from users where role= 'Receiver'";
-    public static final String SAVE_RECEIPT = "insert into receipt(receiverFirstName,receiverLastName,receiverEmail,receiverPhone,senderFirstName,senderLastName,senderEmail,senderPhone,goods) values(?,?,?,?,?,?,?,?,?)";
+    public static final String SAVE_RECEIPT = "insert into receipt(receiverFirstName,receiverLastName,receiverEmail,receiverPhone,senderFirstName,senderLastName,senderEmail,senderPhone,goods,receiverCity,receiverState,receiverCountry) values(?,?,?,?,?,?,?,?,?,?,?,?)";
+    public static final String USER_INFO = "select * from users";
 }

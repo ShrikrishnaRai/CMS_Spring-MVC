@@ -5,8 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,23 +20,26 @@
     <body>
         <div>
             <label>Available Receiver List's</label>
-            <c:if test="${!empty user}">
-                <table border="1">
-                    <thead >
-                    <th>Id</th>
-                    <th>Firstname</th>
-                    <th>Lastname</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Country</th>
-                    <th>State</th>
-                    <th>City</th>
-                    <th>Select</th>
+            <c:if test="${! empty user}">
+                <table border="2">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>FirstName</th>
+                            <th>LastName</th>
+                            <th>City</th>
+                            <th>Country</th>
+                            <th>Email</th>
+                            <th>State</th>
+                            <th>Phone</th>
+                        </tr>
                     </thead>
                     <tbody>
                         <c:forEach items="${user}" var="user">
                             <tr>
-                                <td><c:out value="${user.id}"></c:out></td>
+                                <td>
+                                    <c:out value="${user.id}"></c:out>
+                                    </td>
                                     <td>
                                     <c:out value="${user.firstName}"></c:out>
                                     </td>
@@ -44,20 +47,19 @@
                                     <c:out value="${user.lastName}"></c:out>
                                     </td>
                                     <td>
-                                    <c:out value="${user.email}"></c:out>
+                                    <c:out value="${user.city}"></c:out>
                                     </td>
                                     <td>
-                                    <c:out value="${user.phone}"></c:out>
+                                    <c:out value="${user.country}"></c:out>
                                     </td>
-                                    <td><c:out value="${user.country}"></c:out></td>
+                                    <td>
+                                    <c:out value="${user.email}"></c:out>
+                                    </td>
                                     <td>
                                     <c:out value="${user.state}"></c:out>
                                     </td>
                                     <td>
-                                    <c:out value="${user.city}"></c:out>
-                                    </td>
-                                    <td>
-                                        <input type="radio"/>
+                                    <c:out value="${user.phone}"></c:out>
                                     </td>
                                 </tr>
                         </c:forEach>
@@ -67,18 +69,34 @@
         </div>
         <div>
             <label>Enter Your Detail's to Confirm your Courrier</label>
-            <form style="text-align: center;display:inline-block">
+            <form style="text-align: center;display:inline-block" method="post" action="saveReceipt">
                 <div>
                     <label>Receiver Firstname:</label>
-                    <input type="text" name="firstName" placeholder="Receiver FirstName"/>
+                    <input type="text" name="receiverFirstname" placeholder="Receiver FirstName"/>
                 </div>
                 <div>
                     <label>Receiver Lastname</label>
-                    <input type="text" name="lastName" placeholder="Receiver LastName"/>
+                    <input type="text" name="receiverLastname" placeholder="Receiver LastName"/>
                 </div>
                 <div>
                     <label>Reciever Email</label>
-                    <input type="email" name="email" placeholder="Receiver Email"/>
+                    <input type="email" name="receiverEmail" placeholder="Receiver Email"/>
+                </div>
+                <div>
+                    <label>Reciever Phone</label>
+                    <input type="number" name="receiverPhone" placeholder="Receiver Phone"/>
+                </div>
+                <div>
+                    <label>Receiver City</label>
+                    <input type="text" name="receiverCity" placeholder="Receiver City"/>
+                </div>
+                <div>
+                    <label>Receiver State</label>
+                    <input type="text" name="receiverState" placeholder="Receiver State"/>
+                </div>
+                <div>
+                    <label>Receiver Country</label>
+                    <input type="text" name="receiverCountry" placeholder="Receiver Country"/>
                 </div>
                 <div>
                     <label>Goods Detail's</label>
@@ -86,6 +104,14 @@
                 </div>
                 <input type="submit" value="Submit"/>
             </form>
+        </div>
+        <div>
+            <c:if test="${!empty message}">
+                <c:out value="${message}"></c:out>
+            </c:if>
+        </div>
+        <div>
+            <a href="<c:url value="/logOut"/>">Log Out</a>
         </div>
     </body>
 </html>

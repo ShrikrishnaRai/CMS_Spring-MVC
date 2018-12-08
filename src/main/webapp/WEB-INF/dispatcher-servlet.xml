@@ -34,6 +34,9 @@ http://www.springframework.org/schema/context/spring-context-4.3.xsd">
     <bean id="SignUpDaoServicesIMPL" class="com.shree.containermgmt.Services.SignUp.SignUpDaoServicesIMPL">
         <constructor-arg ref="SignUpDaoIMPL"/>
     </bean> 
+    <bean id="ReceiptServicesIMPL" class="com.shree.containermgmt.Services.Receipt.ReceiptServicesIMPL">
+        <constructor-arg ref="ReceiptDaoIMPL"/>
+    </bean>
     <bean id="LoginDaoServicesIMPL" class="com.shree.containermgmt.Services.Login.LoginDaoServicesIMPL" >
         <constructor-arg ref="LoginDaoIMPL"/>
     </bean>  
@@ -44,6 +47,14 @@ http://www.springframework.org/schema/context/spring-context-4.3.xsd">
     <bean id="UserDaoIMPL" class="com.shree.containermgmt.DAO.User.UserDaoIMPL"/>
     <bean id="SignUpDaoIMPL" class="com.shree.containermgmt.DAO.SignUp.SignUpDaoIMPL" >
         <property name="jdbcTemplate_dco" ref="jdbcTemplate"/>
+    </bean>
+    <bean id="ReceiptDaoIMPL" class="com.shree.containermgmt.DAO.Receipt.ReceiptDaoIMPL">
+        <property name="jdbcTemplate_dco" ref="jdbcTemplate"/>
+    </bean>
+    <bean id="AdminDaoIMPL" class="com.shree.containermgmt.DAO.Admin.AdminDaoIMPL">
+    </bean>
+    <bean id="AdminServicesIMPL" class="com.shree.containermgmt.Services.Admin.AdminServicesIMPL">
+        <constructor-arg ref="AdminDaoIMPL"/>
     </bean>
    
    
