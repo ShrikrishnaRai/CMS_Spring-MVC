@@ -38,4 +38,13 @@ public class UserDaoServicesIMPL implements UserDAOServices {
         return UserDaoIMPL.loggedUserInfo(email, password);
     }
 
+    @Override
+    public boolean checkAvailability(UserDto userDto) {
+        if (UserDaoIMPL.checkAvailability(userDto)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

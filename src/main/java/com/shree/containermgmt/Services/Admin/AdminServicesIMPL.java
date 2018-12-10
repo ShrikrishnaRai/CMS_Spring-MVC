@@ -6,6 +6,7 @@
 package com.shree.containermgmt.Services.Admin;
 
 import com.shree.containermgmt.DAO.Admin.AdminDaoIMPL;
+import com.shree.containermgmt.DAO.Login.LoginDAO;
 import com.shree.containermgmt.DAO.User.UserDAO;
 import com.shree.containermgmt.Model.Log.LogDto;
 import com.shree.containermgmt.Model.User.UserDto;
@@ -16,7 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  *
  * @author cri_r
  */
-public class AdminServicesIMPL implements AdminServices, UserDAO {
+public class AdminServicesIMPL implements AdminServices, UserDAO, LoginDAO {
 
     @Autowired
     AdminDaoIMPL AdminDaoIMPL;
@@ -38,6 +39,20 @@ public class AdminServicesIMPL implements AdminServices, UserDAO {
     @Override
     public UserDto loggedUserInfo(String email, String password) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean checkAvailability(UserDto userDto) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean login(String email, String password) {
+        if (AdminDaoIMPL.login(email, password)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

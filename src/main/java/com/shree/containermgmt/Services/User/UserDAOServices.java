@@ -10,6 +10,7 @@ import com.shree.containermgmt.Model.User.UserDto;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 /**
  *
@@ -21,4 +22,6 @@ public interface UserDAOServices {
     List<UserDto> userInfo();
 
     UserDto loggedUserInfo(String email, String password);
+
+    boolean checkAvailability(@ModelAttribute("UserDto") UserDto userDto);
 }

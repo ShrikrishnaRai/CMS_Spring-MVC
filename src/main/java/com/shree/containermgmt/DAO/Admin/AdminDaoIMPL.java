@@ -5,6 +5,8 @@
  */
 package com.shree.containermgmt.DAO.Admin;
 
+import com.shree.containermgmt.DAO.Login.LoginDAO;
+import com.shree.containermgmt.DAO.Login.LoginDaoIMPL;
 import com.shree.containermgmt.DAO.User.UserDAO;
 import com.shree.containermgmt.DAO.User.UserDaoIMPL;
 import com.shree.containermgmt.Model.Log.LogDto;
@@ -24,7 +26,7 @@ import java.util.logging.Logger;
  *
  * @author cri_r
  */
-public class AdminDaoIMPL implements AdminDao, UserDAO {
+public class AdminDaoIMPL implements AdminDao, UserDAO, LoginDAO {
 
     PreparedStatement ps_Dco;
 
@@ -88,6 +90,31 @@ public class AdminDaoIMPL implements AdminDao, UserDAO {
             Logger.getLogger(UserDaoIMPL.class.getName()).log(Level.SEVERE, null, ex);
         }
         return logDtoList;
+    }
+
+    @Override
+    public boolean checkAvailability(UserDto userDto) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean login(String email, String password) {
+        try {
+            ps_Dco = DbUtil.getConnection().prepareStatement(QueryUtil.LOGIN_ADMIN);
+            ps_Dco.setString(1, email);
+            ps_Dco.setString(2, password);
+            ResultSet rs_dco = ps_Dco.executeQuery();
+            if (rs_dco.next()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginDaoIMPL.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(LoginDaoIMPL.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 
 }

@@ -66,9 +66,11 @@ public class UserDaoIMPL implements UserDAO {
             ResultSet rs_Dco = ps_Dco.executeQuery();
             while (rs_Dco.next()) {
                 UserDto userDto = new UserDto();
+                System.out.println(rs_Dco.getInt("id"));
+                System.out.println(rs_Dco.getString("fisrtName"));
                 userDto.setId(rs_Dco.getInt("id"));
                 userDto.setFirstName(rs_Dco.getString("firstName"));
-                System.out.println("DAO::"+rs_Dco.getString("firstName"));
+                System.out.println("DAO::" + rs_Dco.getString("firstName"));
                 userDto.setLastName(rs_Dco.getString("lastName"));
                 userDto.setEmail(rs_Dco.getString("email"));
                 userDto.setPhone(rs_Dco.getString("phone"));
@@ -82,5 +84,31 @@ public class UserDaoIMPL implements UserDAO {
             Logger.getLogger(UserDaoIMPL.class.getName()).log(Level.SEVERE, null, ex);
         }
         return userDto;
+    }
+
+  
+    @Override
+    public boolean checkAvailability(UserDto userDto) {
+        try {
+            ps_Dco = DbUtil.getConnection().prepareStatement(QueryUtil.CHECK_AVAILABILITY);
+            ps_Dco.setString(1, userDto.getFirstName());
+            ps_Dco.setString(2, userDto.getLastName());
+            ps_Dco.setString(3, userDto.getEmail());
+            ps_Dco.setString(4, userDto.getPhone());
+            ps_Dco.setString(5, userDto.getCity());
+            ps_Dco.setString(6, userDto.getState());
+            ps_Dco.setString(7, userDto.getCountry());
+            ResultSet rs_Dco = ps_Dco.executeQuery();
+            if (rs_Dco.next()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDaoIMPL.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UserDaoIMPL.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 }

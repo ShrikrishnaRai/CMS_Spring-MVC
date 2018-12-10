@@ -45,7 +45,16 @@ public class HomeController {
         receiptServicesIMPL.saveReceipt(userDaoServicesIMPL.loggedUserInfo(session.getAttribute("email").toString(), session.getAttribute("password").toString()), receiptDto);
         System.out.println(userDaoServicesIMPL.loggedUserInfo(session.getAttribute("email").toString(), session.getAttribute("password").toString()).getFirstName());
         model.addAttribute("user", userDaoServicesIMPL.userInfo());
-        model.addAttribute("message","Information Saved");
+        model.addAttribute("message", "Information Saved");
         return HOME_PAGE;
+    }
+
+    @RequestMapping(value = "/checkAvailability")
+    public boolean checkAvailability(@ModelAttribute("UserDto") UserDto userDto) {
+        if (userDaoServicesIMPL.checkAvailability(userDto)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

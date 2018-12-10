@@ -13,5 +13,8 @@ import java.util.List;
  * @author cri_r
  */
 public interface AdminServices {
+
     List<LogDto> getReceiptInfo();
+
+
 }

@@ -5,6 +5,7 @@
  */
 package com.shree.containermgmt.Controller.Index;
 
+import static com.shree.containermgmt.Utils.PageURL.ADMIN_PAGE;
 import static com.shree.containermgmt.Utils.PageURL.LOGIN_PAGE;
 import static com.shree.containermgmt.Utils.PageURL.SIGN_UP_PAGE;
 import javax.servlet.http.HttpServletRequest;
@@ -37,5 +38,4 @@ public class IndexController {
         session.invalidate();
         return LOGIN_PAGE;
     }
-
 }

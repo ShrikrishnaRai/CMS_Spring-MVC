@@ -15,4 +15,5 @@ public class PageURL {
     public static final String SIGN_UP_PAGE = "signUp.jsp";
     public static final String HOME_PAGE = "home.jsp";
     public static final String ADMIN_PAGE = "admin.jsp";
+    public static final String ADMIN_DASH_PAGE = "admin_dash.jsp";
 }
