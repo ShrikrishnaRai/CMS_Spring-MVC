@@ -1,5 +1,7 @@
 package com.shree.containermgmt.DAO.User;
 
+import com.shree.containermgmt.Model.LoggedInfo.LoggedInfo;
+import com.shree.containermgmt.Model.Receipt.ReceiptDto;
 import com.shree.containermgmt.Model.SignUp.SignUpDto;
 import com.shree.containermgmt.Model.User.UserDto;
 import java.util.List;
@@ -18,9 +20,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 @Component
 public interface UserDAO {
 
+    //receiver Receiver User Info
     List<UserDto> userInfo();
 
-    UserDto loggedUserInfo(String email, String password);
+    List<LoggedInfo> loggedUserInfo(String email, String password);
 
     boolean checkAvailability(@ModelAttribute("UserDto") UserDto userDto);
+    
+    List<ReceiptDto> checkedMine(String email);
 }

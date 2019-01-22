@@ -10,6 +10,7 @@ import com.shree.containermgmt.DAO.Login.LoginDaoIMPL;
 import com.shree.containermgmt.DAO.User.UserDAO;
 import com.shree.containermgmt.DAO.User.UserDaoIMPL;
 import com.shree.containermgmt.Model.Log.LogDto;
+import com.shree.containermgmt.Model.LoggedInfo.LoggedInfo;
 import com.shree.containermgmt.Model.Receipt.ReceiptDto;
 import com.shree.containermgmt.Model.User.UserDto;
 import com.shree.containermgmt.Utils.DbUtil;
@@ -30,36 +31,32 @@ public class AdminDaoIMPL implements AdminDao, UserDAO, LoginDAO {
 
     PreparedStatement ps_Dco;
 
-    @Override
-    public List<UserDto> userInfo() {
-        List<UserDto> userDtoList = new ArrayList<>();
-        try {
-            ps_Dco = DbUtil.getConnection().prepareStatement(QueryUtil.USER_INFO);
-            ResultSet rs_Dco = ps_Dco.executeQuery();
-            while (rs_Dco.next()) {
-                UserDto userDto = new UserDto();
-                userDto.setId(rs_Dco.getInt("id"));
-                userDto.setFirstName(rs_Dco.getString("firstName"));
-                userDto.setLastName(rs_Dco.getString("lastName"));
-                userDto.setEmail(rs_Dco.getString("email"));
-                userDto.setPhone(rs_Dco.getString("phone"));
-                userDto.setCity(rs_Dco.getString("city"));
-                userDto.setCountry(rs_Dco.getString("country"));
-                userDto.setState(rs_Dco.getString("state"));
-                userDtoList.add(userDto);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(UserDaoIMPL.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(UserDaoIMPL.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return userDtoList;
-    }
+//    @Override
+//    public List<UserDto> userInfo() {
+//        List<UserDto> userDtoList = new ArrayList<>();
+//        try {
+//            ps_Dco = DbUtil.getConnection().prepareStatement(QueryUtil.USER_INFO);
+//            ResultSet rs_Dco = ps_Dco.executeQuery();
+//            while (rs_Dco.next()) {
+//                UserDto userDto = new UserDto();
+//                userDto.setId(rs_Dco.getInt("id"));
+//                userDto.setFirstName(rs_Dco.getString("firstName"));
+//                userDto.setLastName(rs_Dco.getString("lastName"));
+//                userDto.setEmail(rs_Dco.getString("email"));
+//                userDto.setPhone(rs_Dco.getString("phone"));
+//                userDto.setCity(rs_Dco.getString("city"));
+//                userDto.setCountry(rs_Dco.getString("country"));
+//                userDto.setState(rs_Dco.getString("state"));
+//                userDtoList.add(userDto);
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(UserDaoIMPL.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(UserDaoIMPL.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return userDtoList;
+//    }
 
-    @Override
-    public UserDto loggedUserInfo(String email, String password) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @Override
     public List<LogDto> getReceiptInfo() {
@@ -97,24 +94,61 @@ public class AdminDaoIMPL implements AdminDao, UserDAO, LoginDAO {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+//    @Override
+//    public boolean login(String email, String password) {
+//        try {
+//            ps_Dco = DbUtil.getConnection().prepareStatement(QueryUtil.LOGIN_ADMIN);
+//            ps_Dco.setString(1, email);
+//            ps_Dco.setString(2, password);
+//            ResultSet rs_dco = ps_Dco.executeQuery();
+//            if (rs_dco.next()) {
+//                return true;
+//            } else {
+//                return false;
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(LoginDaoIMPL.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(LoginDaoIMPL.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return false;
+//    }
+
     @Override
-    public boolean login(String email, String password) {
-        try {
-            ps_Dco = DbUtil.getConnection().prepareStatement(QueryUtil.LOGIN_ADMIN);
-            ps_Dco.setString(1, email);
-            ps_Dco.setString(2, password);
-            ResultSet rs_dco = ps_Dco.executeQuery();
-            if (rs_dco.next()) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(LoginDaoIMPL.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(LoginDaoIMPL.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return false;
+    public List<UserDto> userInfo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public List<LoggedInfo> loggedUserInfo(String email, String password) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<LoggedInfo> login(String email, String password) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+	@Override
+	public boolean adminLogin(String email, String password) {
+      try {
+      ps_Dco = DbUtil.getConnection().prepareStatement(QueryUtil.LOGIN_ADMIN);
+      ps_Dco.setString(1, email);
+      ps_Dco.setString(2, password);
+      ResultSet rs_dco = ps_Dco.executeQuery();
+      if (rs_dco.next()) {
+          return true;
+      } else {
+          return false;
+      }
+  } catch (SQLException ex) {
+      Logger.getLogger(LoginDaoIMPL.class.getName()).log(Level.SEVERE, null, ex);
+  } catch (ClassNotFoundException ex) {
+      Logger.getLogger(LoginDaoIMPL.class.getName()).log(Level.SEVERE, null, ex);
+  }
+  return false;
+	}
+
+
 
 }

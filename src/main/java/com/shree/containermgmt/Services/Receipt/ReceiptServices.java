@@ -1,6 +1,8 @@
 package com.shree.containermgmt.Services.Receipt;
 
+import com.shree.containermgmt.Model.LoggedInfo.LoggedInfo;
 import com.shree.containermgmt.Model.Receipt.ReceiptDto;
+import com.shree.containermgmt.Model.Transaction.TransactionDto;
 import com.shree.containermgmt.Model.User.UserDto;
 import java.util.List;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,5 +18,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
  */
 public interface ReceiptServices {
 
-    void saveReceipt(@ModelAttribute("UserDto") UserDto userDto, ReceiptDto receiptDto);
+    void saveReceipt(List<LoggedInfo> loggedInfo, ReceiptDto receiptDto);
+    List<TransactionDto> getTransactionList();
 }

@@ -13,6 +13,7 @@ import java.util.List;
  * @author cri_r
  */
 public interface AdminDao {
-
+	
+	boolean adminLogin(String email,String password);
     List<LogDto> getReceiptInfo();
 }

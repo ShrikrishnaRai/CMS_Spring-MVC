@@ -6,7 +6,9 @@
 package com.shree.containermgmt.Services.Receipt;
 
 import com.shree.containermgmt.DAO.Receipt.ReceiptDaoIMPL;
+import com.shree.containermgmt.Model.LoggedInfo.LoggedInfo;
 import com.shree.containermgmt.Model.Receipt.ReceiptDto;
+import com.shree.containermgmt.Model.Transaction.TransactionDto;
 import com.shree.containermgmt.Model.User.UserDto;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +27,16 @@ public class ReceiptServicesIMPL implements ReceiptServices {
         this.ReceiptDaoIMPL = ReceiptDaoIMPL;
     }
 
-    @Override
-    public void saveReceipt(@ModelAttribute("UserDto") UserDto userDto, ReceiptDto receiptDto) {
-        ReceiptDaoIMPL.saveReceipt(userDto, receiptDto);
-    }
+	@Override
+	public void saveReceipt(List<LoggedInfo> loggedInfo, ReceiptDto receiptDto) {
+		ReceiptDaoIMPL.saveReceipt(loggedInfo, receiptDto);
+	}
+
+	@Override
+	public List<TransactionDto> getTransactionList() {
+		return ReceiptDaoIMPL.getTransactionList();
+	}
+
+
 
 }

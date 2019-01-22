@@ -6,6 +6,8 @@
 package com.shree.containermgmt.Services.Login;
 
 import com.shree.containermgmt.DAO.Login.LoginDaoIMPL;
+import com.shree.containermgmt.Model.LoggedInfo.LoggedInfo;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -23,13 +25,17 @@ public class LoginDaoServicesIMPL implements LoginDAOServices {
         this.loginDaoIMPL = loginDaoIMPL;
     }
 
+//    @Override
+//    public boolean login(String email, String password) {
+//        if (loginDaoIMPL.login(email, password)) {
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
     @Override
-    public boolean login(String email, String password) {
-        if (loginDaoIMPL.login(email, password)) {
-            return true;
-        } else {
-            return false;
-        }
+    public List<LoggedInfo> login(String email, String password) {
+        return loginDaoIMPL.login(email, password);
     }
 
 }

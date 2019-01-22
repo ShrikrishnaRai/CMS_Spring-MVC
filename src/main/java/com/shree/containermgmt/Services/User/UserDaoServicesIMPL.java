@@ -7,6 +7,7 @@ package com.shree.containermgmt.Services.User;
 
 import com.shree.containermgmt.DAO.User.UserDAO;
 import com.shree.containermgmt.DAO.User.UserDaoIMPL;
+import com.shree.containermgmt.Model.LoggedInfo.LoggedInfo;
 import com.shree.containermgmt.Model.SignUp.SignUpDto;
 import com.shree.containermgmt.Model.User.UserDto;
 import java.util.ArrayList;
@@ -29,22 +30,22 @@ public class UserDaoServicesIMPL implements UserDAOServices {
     }
 
     @Override
-    public List<UserDto> userInfo() {
-        return UserDaoIMPL.userInfo();
-    }
-
-    @Override
-    public UserDto loggedUserInfo(String email, String password) {
-        return UserDaoIMPL.loggedUserInfo(email, password);
-    }
-
-    @Override
     public boolean checkAvailability(UserDto userDto) {
         if (UserDaoIMPL.checkAvailability(userDto)) {
             return true;
         } else {
             return false;
         }
+    }
+
+    @Override
+    public List<UserDto> userInfo() {
+        return UserDaoIMPL.userInfo();
+    }
+
+    @Override
+    public List<LoggedInfo> loggedUserInfo(String email, String password) {
+        return UserDaoIMPL.loggedUserInfo(email, password);
     }
 
 }

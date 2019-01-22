@@ -5,6 +5,8 @@
  */
 package com.shree.containermgmt.DAO.User;
 
+import com.shree.containermgmt.Model.LoggedInfo.LoggedInfo;
+import com.shree.containermgmt.Model.Receipt.ReceiptDto;
 import com.shree.containermgmt.Model.SignUp.SignUpDto;
 import com.shree.containermgmt.Model.User.UserDto;
 import com.shree.containermgmt.Utils.DbUtil;
@@ -31,6 +33,7 @@ public class UserDaoIMPL implements UserDAO {
     SignUpDto signUpDto = new SignUpDto();
     UserDto userDto = new UserDto();
 
+    //retrieves information of receiver users from 
     @Override
     public List<UserDto> userInfo() {
         List<UserDto> userDtoList = new ArrayList<>();
@@ -57,20 +60,19 @@ public class UserDaoIMPL implements UserDAO {
         return userDtoList;
     }
 
+    //retrieves loggedIn userInfo
     @Override
-    public UserDto loggedUserInfo(String email, String password) {
+    public List<LoggedInfo> loggedUserInfo(String email, String password) {
+        List<LoggedInfo> userDtoList = new ArrayList<>();
         try {
-            ps_Dco = DbUtil.getConnection().prepareStatement(QueryUtil.LOGIN);
+            ps_Dco = DbUtil.getConnection().prepareStatement(QueryUtil.LOGGED_INF);
             ps_Dco.setString(1, email);
             ps_Dco.setString(2, password);
             ResultSet rs_Dco = ps_Dco.executeQuery();
             while (rs_Dco.next()) {
-                UserDto userDto = new UserDto();
-                System.out.println(rs_Dco.getInt("id"));
-                System.out.println(rs_Dco.getString("fisrtName"));
+                LoggedInfo userDto = new LoggedInfo();
                 userDto.setId(rs_Dco.getInt("id"));
                 userDto.setFirstName(rs_Dco.getString("firstName"));
-                System.out.println("DAO::" + rs_Dco.getString("firstName"));
                 userDto.setLastName(rs_Dco.getString("lastName"));
                 userDto.setEmail(rs_Dco.getString("email"));
                 userDto.setPhone(rs_Dco.getString("phone"));
@@ -83,10 +85,10 @@ public class UserDaoIMPL implements UserDAO {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(UserDaoIMPL.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return userDto;
+        return userDtoList;
     }
 
-  
+    //Check receiver is available
     @Override
     public boolean checkAvailability(UserDto userDto) {
         try {
@@ -111,4 +113,17 @@ public class UserDaoIMPL implements UserDAO {
         }
         return false;
     }
+
+	@Override
+	public List<ReceiptDto> checkedMine(String email) {
+		try {
+			ps_Dco=DbUtil.getConnection().prepareStatement(QueryUtil.CHECK_MINE);
+			ps_Dco.setString(1, email);
+
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

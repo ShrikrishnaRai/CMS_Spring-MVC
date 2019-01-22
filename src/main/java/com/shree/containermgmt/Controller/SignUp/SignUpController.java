@@ -10,6 +10,7 @@ import com.shree.containermgmt.Services.SignUp.SignUpDaoServicesIMPL;
 import static com.shree.containermgmt.Utils.PageURL.SIGN_UP_PAGE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,8 +27,8 @@ public class SignUpController {
     private SignUpDaoServicesIMPL signUpDaoServicesIMPL;
 
     @RequestMapping(value = "/Create/Users", method = RequestMethod.POST)
-    public ModelAndView signUp(@ModelAttribute("SignUpDto") SignUpDto signUpDto) {
+    public String signUp(@ModelAttribute("SignUpDto") SignUpDto signUpDto,Model model) {
         signUpDaoServicesIMPL.signUp(signUpDto);
-        return new ModelAndView(SIGN_UP_PAGE);
+        return SIGN_UP_PAGE;
     }
 }

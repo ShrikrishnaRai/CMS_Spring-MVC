@@ -7,9 +7,16 @@ package com.shree.containermgmt.Services.Admin;
 
 import com.shree.containermgmt.DAO.Admin.AdminDaoIMPL;
 import com.shree.containermgmt.DAO.Login.LoginDAO;
+import com.shree.containermgmt.DAO.Receipt.ReceiptDAO;
+import com.shree.containermgmt.DAO.Receipt.ReceiptDaoIMPL;
 import com.shree.containermgmt.DAO.User.UserDAO;
 import com.shree.containermgmt.Model.Log.LogDto;
+import com.shree.containermgmt.Model.LoggedInfo.LoggedInfo;
+import com.shree.containermgmt.Model.Receipt.ReceiptDto;
+import com.shree.containermgmt.Model.Transaction.TransactionDto;
 import com.shree.containermgmt.Model.User.UserDto;
+import com.shree.containermgmt.Services.Receipt.ReceiptServicesIMPL;
+
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -17,42 +24,86 @@ import org.springframework.beans.factory.annotation.Autowired;
  *
  * @author cri_r
  */
-public class AdminServicesIMPL implements AdminServices, UserDAO, LoginDAO {
+public class AdminServicesIMPL implements AdminServices, UserDAO, LoginDAO ,ReceiptDAO{
 
     @Autowired
     AdminDaoIMPL AdminDaoIMPL;
-
+   
+    ReceiptDAO receiptDaoIMPL =new ReceiptDaoIMPL();
+    
     public AdminServicesIMPL(AdminDaoIMPL AdminDaoIMPL) {
         this.AdminDaoIMPL = AdminDaoIMPL;
     }
+    
+    
 
-    @Override
+ 	@Override
     public List<LogDto> getReceiptInfo() {
         return AdminDaoIMPL.getReceiptInfo();
     }
 
-    @Override
-    public List<UserDto> userInfo() {
-        return AdminDaoIMPL.userInfo();
-    }
 
-    @Override
-    public UserDto loggedUserInfo(String email, String password) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
 
     @Override
     public boolean checkAvailability(UserDto userDto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+//    @Override
+//    public boolean login(String email, String password) {
+//        if (AdminDaoIMPL.login(email, password)) {
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
+
     @Override
-    public boolean login(String email, String password) {
-        if (AdminDaoIMPL.login(email, password)) {
-            return true;
-        } else {
-            return false;
-        }
+    public List<UserDto> userInfo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public List<LoggedInfo> loggedUserInfo(String email, String password) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<LoggedInfo> login(String email, String password) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+	@Override
+	public boolean loginAdmin(String email, String password) {
+		if(AdminDaoIMPL.adminLogin(email, password)) {
+			return true;
+		}
+		else {
+		return false;
+	}
+	}
+
+	@Override
+	public void saveReceipt(List<LoggedInfo> loggedInfo, ReceiptDto receiptDto) {
+		// TODO Auto-generated method stub
+		
+	}
+//
+//	@Override
+//	public List<TransactionDto> getTransactionList() {
+//		return receiptServicesIMPL.getTransactionList();
+//	}
+
+
+
+	@Override
+	public List<TransactionDto> getTransactionList() {
+		// TODO Auto-generated method stub
+		return receiptDaoIMPL.getTransactionList();
+	}
+
+
+
 
 }

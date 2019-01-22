@@ -33,9 +33,10 @@
                         <a class="nav-link" href="#">Features</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
+                        <a class="nav-link" href="#">My Order</a>
                     </li>
                 </ul>
+                
                 <span class="navbar-text">
                     <div>
                         <a href="<c:url value="/logOut"/>">Log Out</a>
@@ -94,76 +95,40 @@
         </div>
         <div>
             <label>Enter Your Detail's to Confirm your Courrier</label>
-            <!--     <form style="text-align: center;display:inline-block" method="post" action="saveReceipt">
-                     <div>
-                         <div>
-                             <label>Receiver Firstname:</label>
-                             <input type="text" name="receiverFirstname" placeholder="Receiver FirstName"/>
-                         </div>
-                         <div>
-                             <label>Receiver Lastname</label>
-                             <input type="text" name="receiverLastname" placeholder="Receiver LastName"/>
-                         </div>
-                         <div>
-                             <label>Reciever Email</label>
-                             <input type="email" name="receiverEmail" placeholder="Receiver Email"/>
-                         </div>
-                         <div>
-                             <label>Reciever Phone</label>
-                             <input type="number" name="receiverPhone" placeholder="Receiver Phone"/>
-                         </div>
-                         <div>
-                             <label>Receiver City</label>
-                             <input type="text" name="receiverCity" placeholder="Receiver City"/>
-                         </div>
-                         <div>
-                             <label>Receiver State</label>
-                             <input type="text" name="receiverState" placeholder="Receiver State"/>
-                         </div>
-                         <div>
-                             <label>Receiver Country</label>
-                             <input type="text" name="receiverCountry" placeholder="Receiver Country"/>
-                         </div>
-                         <div>
-                             <label>Goods Detail's</label>
-                             <input type="text" name="goods" placeholder="Goods"/>
-                         </div>
-                         <input type="submit" value="Submit"/>
-                     </div>
-                 </form>
-            -->
         </div>
-        <form>
-            <div class="row">
-                <div class="form-group col-xs-6">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="receiverFirstname" placeholder="Receiver FirstName"/>
-                    <br/>
-                    <br/>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" name="receiverPhone" placeholder="Receiver Phone"/>
-                    <br/>
-                    <br/>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="receiverCountry" placeholder="Receiver Country"/>
+        <div style="margin:2">
+            <form method="POST" action="saveReceipt">
+                <div class="row">
+                    <div class="form-group col-xs-6">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control" type="text" name="receiverFirstname" placeholder="Receiver FirstName"/>
+                        <br/>
+                        <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control"  type="number" name="receiverPhone" placeholder="Receiver Phone"/>
+                        <br/>
+                        <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control"  type="text" name="receiverCountry" placeholder="Receiver Country"/>
+                    </div>
+                    <div class="form-group col-xs-6">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control"  type="text" name="receiverLastname" placeholder="Receiver LastName"/>
+                        <br/>
+                        <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control"  type="text" name="receiverCity" placeholder="Receiver City"/>
+                        <br/>
+                        <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control"  type="text" name="goods" placeholder="Goods"/>
+                    </div>
+                    <div class="form-group col-xs-6">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input class="form-control"  type="email" name="receiverEmail" placeholder="Receiver Email"/>
+                        <br/>
+                        <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control"  type="text" name="receiverState" placeholder="Receiver State"/>
+                        <br/>
+                        <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input  type="submit" value="Submit" class="btn btn-primary"/>
+                    </div>
                 </div>
-                <div class="form-group col-xs-6">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="receiverLastname" placeholder="Receiver LastName"/>
-                    <br/>
-                    <br/>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="receiverCity" placeholder="Receiver City"/>
-                    <br/>
-                    <br/>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="goods" placeholder="Goods"/>
-                </div>
-                <div class="form-group col-xs-6">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="email" name="receiverEmail" placeholder="Receiver Email"/>
-                    <br/>
-                    <br/>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="receiverState" placeholder="Receiver State"/>
-                    <br/>
-                    <br/>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Submit" class="btn-primary"/>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
         <div>
             <c:if test="${!empty message}">
                 <c:out value="${message}"></c:out>
@@ -171,3 +136,4 @@
         </div>
     </body>
 </html>
+

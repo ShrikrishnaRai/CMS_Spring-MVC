@@ -21,6 +21,11 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <section class="login-block">
+<!--     <div> -->
+<!--     <font color="red">Under Maintenance !!!</font> -->
+<!--     <label></label> -->
+<!--    	<font color="red">Beta 1.0</font> -->
+<!--     </div> -->
         <div class="container">
             <div class="row">
                 <div class="col-md-4 login-sec">
@@ -35,7 +40,7 @@
                             <label for="exampleInputPassword1" class="text-uppercase">Password</label>
                             <input type="password" class="form-control" placeholder="Password" name="password">
                         </div>
-
+						
 
                         <div class="form-check">
                             <c:if test="${!empty message}">
@@ -47,6 +52,9 @@
                         <br/>
                         <div class="container-fluid">
                             <a href="<c:url value="/signUpPage"/>">Don't have Account ? Sign Up Here</a>
+                        </div>
+                          <div class="container-fluid">
+                            <a href="<c:url value="/admin"/>">Admin Login</a>
                         </div>
                     </form>
                 </div>
@@ -62,26 +70,26 @@
                                 <img class="d-block img-fluid" src="https://static.pexels.com/photos/33972/pexels-photo.jpg" alt="First slide">
                                 <div class="carousel-caption d-none d-md-block">
                                     <div class="banner-text">
-                                        <h2>This is Heaven</h2>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+                                        <h2>Container Management System</h2>
+                                        <p>Your Control Your Price</p>
                                     </div>	
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <img class="d-block img-fluid" src="https://images.pexels.com/photos/7097/people-coffee-tea-meeting.jpg" alt="First slide">
+                                <img class="d-block img-fluid" src="https://guardian.ng/wp-content/uploads/2017/08/621af29360685f88fae4c26f96ed9d8c_XL.jpg" alt="First slide">
                                 <div class="carousel-caption d-none d-md-block">
                                     <div class="banner-text">
-                                        <h2>This is Heaven</h2>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+                                        <h2>CMS</h2>
+                                        <p>Container Processing</p>
                                     </div>	
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <img class="d-block img-fluid" src="https://images.pexels.com/photos/872957/pexels-photo-872957.jpeg" alt="First slide">
+                                <img class="d-block img-fluid" src="https://media.wired.com/photos/5a035e6f06eea65aaa281ea2/master/w_2400,c_limit/cargoship-TA.jpg" alt="First slide">
                                 <div class="carousel-caption d-none d-md-block">
                                     <div class="banner-text">
-                                        <h2>This is Heaven</h2>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+                                        <h2>CMS</h2>
+                                        <p>International Shipment</p>
                                     </div>	
                                 </div>
                             </div>

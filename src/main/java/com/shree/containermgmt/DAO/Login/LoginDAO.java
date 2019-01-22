@@ -5,6 +5,8 @@
  */
 package com.shree.containermgmt.DAO.Login;
 
+import com.shree.containermgmt.Model.LoggedInfo.LoggedInfo;
+import java.util.List;
 import org.springframework.stereotype.Component;
 
 /**
@@ -14,5 +16,5 @@ import org.springframework.stereotype.Component;
 @Component
 public interface LoginDAO {
 
-    boolean login(String email, String password);
+    List<LoggedInfo> login(String email, String password);
 }

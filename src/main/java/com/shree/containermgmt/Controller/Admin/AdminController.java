@@ -37,11 +37,13 @@ public class AdminController {
 
     @RequestMapping(value = "/loginAdmin", method = RequestMethod.POST)
     public String loginAdmin(@ModelAttribute("UserDto") UserDto userDto, Model model) {
-        if (AdminServicesIMPL.login(userDto.getEmail(), userDto.getPassword())) {
-            model.addAttribute("user", userDaoServicesIMPL.userInfo());
-            model.addAttribute("message", "Admin Verification Failed");
-            return ADMIN_DASH_PAGE;
+        if (AdminServicesIMPL.loginAdmin(userDto.getEmail(), userDto.getPassword())) {
+        	model.addAttribute("user", userDaoServicesIMPL.userInfo());
+        	model.addAttribute("transaction",AdminServicesIMPL.getTransactionList());
+        	return ADMIN_DASH_PAGE;
         } else {
+            model.addAttribute("message", "Admin Verification Failed");
+
             return ADMIN_PAGE;
         }
     }

@@ -6,6 +6,7 @@
 package com.shree.containermgmt.Controller.Login;
 
 import com.shree.containermgmt.DAO.User.UserDaoIMPL;
+import com.shree.containermgmt.Model.LoggedInfo.LoggedInfo;
 import com.shree.containermgmt.Model.Login.LoginDto;
 import com.shree.containermgmt.Model.SignUp.SignUpDto;
 import com.shree.containermgmt.Model.User.UserDto;
@@ -47,16 +48,18 @@ public class LoginController {
     @Autowired
     ReceiptServicesIMPL receiptServicesIMPL;
 
-    String username;
-    String password;
+    public static String username;
+    public static String password;
 
-    public static HttpSession session;
+    UserDto userDto = new UserDto();
 
     @RequestMapping(value = "/loginUser", method = RequestMethod.POST)
     public String loginUser(@ModelAttribute("LoginDto") LoginDto loginDto, Model model, HttpSession session) {
-        if (loginDaoServicesIMPL.login(loginDto.getEmail(), loginDto.getPassword())) {
+        if (loginDaoServicesIMPL.login(loginDto.getEmail(), loginDto.getPassword()).size() > 0) {
             session.setAttribute("email", loginDto.getEmail());
             session.setAttribute("password", loginDto.getPassword());
+            username = loginDto.getEmail();
+            password = loginDto.getPassword();
             model.addAttribute("user", userDaoServicesIMPL.userInfo());
             return HOME_PAGE;
         } else {
