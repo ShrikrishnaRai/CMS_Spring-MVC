@@ -24,70 +24,63 @@ import org.springframework.beans.factory.annotation.Autowired;
  *
  * @author cri_r
  */
-public class AdminServicesIMPL implements AdminServices, UserDAO, LoginDAO ,ReceiptDAO{
+public class AdminServicesIMPL implements AdminServices, UserDAO, LoginDAO, ReceiptDAO {
 
-    @Autowired
-    AdminDaoIMPL AdminDaoIMPL;
-   
-    ReceiptDAO receiptDaoIMPL =new ReceiptDaoIMPL();
-    
-    public AdminServicesIMPL(AdminDaoIMPL AdminDaoIMPL) {
-        this.AdminDaoIMPL = AdminDaoIMPL;
-    }
-    
-    
+	@Autowired
+	AdminDaoIMPL AdminDaoIMPL;
 
- 	@Override
-    public List<LogDto> getReceiptInfo() {
-        return AdminDaoIMPL.getReceiptInfo();
-    }
+	ReceiptDAO receiptDaoIMPL = new ReceiptDaoIMPL();
 
+	public AdminServicesIMPL(AdminDaoIMPL AdminDaoIMPL) {
+		this.AdminDaoIMPL = AdminDaoIMPL;
+	}
 
+	@Override
+	public List<LogDto> getReceiptInfo() {
+		return AdminDaoIMPL.getReceiptInfo();
+	}
 
+	// Checks receiver availability with receiver email
+	@Override
+	public boolean checkAvailability(String email) {
+		if (AdminDaoIMPL.checkAvailability(email)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
-    @Override
-    public boolean checkAvailability(UserDto userDto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+	@Override
+	public List<UserDto> userInfo() {
+		throw new UnsupportedOperationException("Not supported yet."); // To change body of generated methods, choose
+																		// Tools | Templates.
+	}
 
-//    @Override
-//    public boolean login(String email, String password) {
-//        if (AdminDaoIMPL.login(email, password)) {
-//            return true;
-//        } else {
-//            return false;
-//        }
-//    }
+	@Override
+	public List<LoggedInfo> loggedUserInfo(String email, String password) {
+		throw new UnsupportedOperationException("Not supported yet."); // To change body of generated methods, choose
+																		// Tools | Templates.
+	}
 
-    @Override
-    public List<UserDto> userInfo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<LoggedInfo> loggedUserInfo(String email, String password) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<LoggedInfo> login(String email, String password) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+	@Override
+	public List<LoggedInfo> login(String email, String password) {
+		throw new UnsupportedOperationException("Not supported yet."); // To change body of generated methods, choose
+																		// Tools | Templates.
+	}
 
 	@Override
 	public boolean loginAdmin(String email, String password) {
-		if(AdminDaoIMPL.adminLogin(email, password)) {
+		if (AdminDaoIMPL.adminLogin(email, password)) {
 			return true;
+		} else {
+			return false;
 		}
-		else {
-		return false;
-	}
 	}
 
 	@Override
 	public void saveReceipt(List<LoggedInfo> loggedInfo, ReceiptDto receiptDto) {
 		// TODO Auto-generated method stub
-		
+
 	}
 //
 //	@Override
@@ -95,15 +88,21 @@ public class AdminServicesIMPL implements AdminServices, UserDAO, LoginDAO ,Rece
 //		return receiptServicesIMPL.getTransactionList();
 //	}
 
-
-
 	@Override
 	public List<TransactionDto> getTransactionList() {
 		// TODO Auto-generated method stub
 		return receiptDaoIMPL.getTransactionList();
 	}
 
+	@Override
+	public List<LoggedInfo> checkedMine(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-
+	@Override
+	public List<UserDto> getSearchInfo(String email) {
+		return AdminDaoIMPL.getSearchInfo(email);
+	}
 
 }

@@ -21,16 +21,6 @@ http://www.springframework.org/schema/context/spring-context-4.3.xsd">
         <property name="prefix" value="/WEB-INF/views/" />
         <property name="suffix" value="" />
     </bean>
-<!--     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">     -->
-<!--         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>     -->
-<!--         <property name="url" value="jdbc:mysql://containermanagement.mysql.database.azure.com:3306/cms?useLegacyDatetimeCode=false;serverTimeZone=Asia/Kathmandu;useSSL=false"></property>     -->
-<!--         <property name="username" value="cri@containermanagement"></property>     -->
-<!--         <property name="password" value="Linux_ubuntu"></property>     -->
-<!--     </bean>  -->
-<!--     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">     -->
-<!--         <property name="dataSource" ref="dataSource"></property>     -->
-<!--     </bean>  -->
-
     <bean id="SignUpDaoServicesIMPL" class="com.shree.containermgmt.Services.SignUp.SignUpDaoServicesIMPL">
         <constructor-arg ref="SignUpDaoIMPL"/>
     </bean> 

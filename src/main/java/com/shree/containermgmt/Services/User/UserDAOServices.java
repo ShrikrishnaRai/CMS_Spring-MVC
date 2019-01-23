@@ -20,10 +20,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 @Component
 public interface UserDAOServices {
 
-    //retrieves receiver info
-    List<UserDto> userInfo();
+	// retrieves receiver info
+	List<UserDto> userInfo();
 
-    List<LoggedInfo> loggedUserInfo(String email, String password);
+	List<LoggedInfo> loggedUserInfo(String email, String password);
 
-    boolean checkAvailability(@ModelAttribute("UserDto") UserDto userDto);
+	boolean checkAvailability(String email);
+
+	// checks logged users info on shipment
+	List<LoggedInfo> checkMine(String email);
 }

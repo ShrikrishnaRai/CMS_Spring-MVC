@@ -22,30 +22,35 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserDaoServicesIMPL implements UserDAOServices {
 
-    @Autowired
-    UserDaoIMPL UserDaoIMPL;
+	@Autowired
+	UserDaoIMPL UserDaoIMPL;
 
-    public UserDaoServicesIMPL(UserDaoIMPL userDaoIMPL) {
-        this.UserDaoIMPL = userDaoIMPL;
-    }
+	public UserDaoServicesIMPL(UserDaoIMPL userDaoIMPL) {
+		this.UserDaoIMPL = userDaoIMPL;
+	}
 
-    @Override
-    public boolean checkAvailability(UserDto userDto) {
-        if (UserDaoIMPL.checkAvailability(userDto)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+	@Override
+	public boolean checkAvailability(String email) {
+		if (UserDaoIMPL.checkAvailability(email)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
-    @Override
-    public List<UserDto> userInfo() {
-        return UserDaoIMPL.userInfo();
-    }
+	@Override
+	public List<UserDto> userInfo() {
+		return UserDaoIMPL.userInfo();
+	}
 
-    @Override
-    public List<LoggedInfo> loggedUserInfo(String email, String password) {
-        return UserDaoIMPL.loggedUserInfo(email, password);
-    }
+	@Override
+	public List<LoggedInfo> loggedUserInfo(String email, String password) {
+		return UserDaoIMPL.loggedUserInfo(email, password);
+	}
+
+	@Override
+	public List<LoggedInfo> checkMine(String email) {
+		return UserDaoIMPL.checkedMine(email);
+	}
 
 }

@@ -6,6 +6,8 @@
 package com.shree.containermgmt.DAO.Admin;
 
 import com.shree.containermgmt.Model.Log.LogDto;
+import com.shree.containermgmt.Model.User.UserDto;
+
 import java.util.List;
 
 /**
@@ -13,7 +15,12 @@ import java.util.List;
  * @author cri_r
  */
 public interface AdminDao {
-	
-	boolean adminLogin(String email,String password);
-    List<LogDto> getReceiptInfo();
+
+	boolean adminLogin(String email, String password);
+
+	List<LogDto> getReceiptInfo();
+
+	// Get userInfo from search
+	List<UserDto> getSearchInfo(String email);
+
 }

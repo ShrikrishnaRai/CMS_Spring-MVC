@@ -6,6 +6,8 @@
 package com.shree.containermgmt.Services.Admin;
 
 import com.shree.containermgmt.Model.Log.LogDto;
+import com.shree.containermgmt.Model.User.UserDto;
+
 import java.util.List;
 
 /**
@@ -14,9 +16,11 @@ import java.util.List;
  */
 public interface AdminServices {
 
-    List<LogDto> getReceiptInfo();
-    
-    boolean loginAdmin(String email,String password);
+	List<LogDto> getReceiptInfo();
 
+	boolean loginAdmin(String email, String password);
+
+	// Get userInfo from search
+	List<UserDto> getSearchInfo(String email);
 
 }

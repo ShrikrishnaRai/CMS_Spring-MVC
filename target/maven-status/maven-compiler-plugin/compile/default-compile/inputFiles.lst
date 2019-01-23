@@ -2,6 +2,7 @@
 /home/cri/Desktop/CMS_Spring-MVC/src/main/java/com/shree/containermgmt/Services/Receipt/ReceiptServices.java
 /home/cri/Desktop/CMS_Spring-MVC/src/main/java/com/shree/containermgmt/DAO/User/UserDAO.java
 /home/cri/Desktop/CMS_Spring-MVC/src/main/java/com/shree/containermgmt/Services/Login/LoginDaoServicesIMPL.java
+/home/cri/Desktop/CMS_Spring-MVC/src/main/java/com/shree/containermgmt/Controller/User/UserShipmentController.java
 /home/cri/Desktop/CMS_Spring-MVC/src/main/java/com/shree/containermgmt/Services/User/UserDAOServices.java
 /home/cri/Desktop/CMS_Spring-MVC/src/main/java/com/shree/containermgmt/Model/Log/LogDto.java
 /home/cri/Desktop/CMS_Spring-MVC/src/main/java/com/shree/containermgmt/Controller/Index/IndexController.java

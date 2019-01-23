@@ -25,7 +25,8 @@ public interface UserDAO {
 
     List<LoggedInfo> loggedUserInfo(String email, String password);
 
-    boolean checkAvailability(@ModelAttribute("UserDto") UserDto userDto);
+    boolean checkAvailability(String email);
     
-    List<ReceiptDto> checkedMine(String email);
+    //check logged in users shipment as receiver
+    List<LoggedInfo> checkedMine(String email);
 }
