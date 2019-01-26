@@ -133,4 +133,29 @@ public class UserDaoIMPL implements UserDAO {
 		}
 		return receiptList;
 	}
+
+	@Override
+	public List<ReceiptDto> checkedSending(String email) {
+		ReceiptDto receiptDto = new ReceiptDto();
+		List<ReceiptDto> receiptDtoList = new ArrayList<>();
+		try {
+			ps_Dco = DbUtil.getConnection().prepareStatement(QueryUtil.CHECK_MINE_SENT);
+			ResultSet rs_Dco = ps_Dco.executeQuery();
+			while (rs_Dco.next()) {
+				receiptDto.setId(rs_Dco.getInt("id"));
+				receiptDto.setReceiverEmail(rs_Dco.getString("receiverEmail"));
+				receiptDto.setReceiverPhone(rs_Dco.getString("receiverPhone"));
+				receiptDto.setReceiverFirstname(rs_Dco.getString("receiverFirstname"));
+				receiptDto.setReceiverLastname(rs_Dco.getString("receiverLastname"));
+				receiptDto.setReceiverCity(rs_Dco.getString("receiverCity"));
+				receiptDto.setReceiverCountry(rs_Dco.getString("receiverCountry"));
+				receiptDto.setReceiverState(rs_Dco.getString("receiverState"));
+				receiptDto.setGoods(rs_Dco.getString("goods"));
+				receiptDtoList.add(receiptDto);
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		return receiptDtoList;
+	}
 }

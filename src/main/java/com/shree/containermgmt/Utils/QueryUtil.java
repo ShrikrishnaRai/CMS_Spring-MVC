@@ -19,7 +19,8 @@ public class QueryUtil {
 	public static final String USER_INFO = "select * from users where email=?";
 	public static final String CHECK_AVAILABILITY = "select * from users where role='Receiver', firstName=? , lastName=?,email=?,phone=?,city=?,state=?,country=?";
 	public static final String RECEIPT_INFO = "select * from receipt";
-	public static final String RECEIPT_CHECK = "selecr * from receipt where email=?";
+	public static final String RECEIPT_CHECK = "select * from receipt where email=?";
 	public static final String LOGGED_INF = "select * from users where email=? and password=?";
-	public static final String CHECK_MINE = "selecr * from receipt where email=?";
+	public static final String CHECK_MINE = "select * from receipt where receiverEmail=?";
+	public static final String CHECK_MINE_SENT="select * from receipt where senderEmail=?";
 }

@@ -29,4 +29,7 @@ public interface UserDAO {
     
     //check logged in users shipment as receiver
     List<LoggedInfo> checkedMine(String email);
+    
+    //check logged in users shipment as sender
+    List<ReceiptDto> checkedSending(String email);
 }

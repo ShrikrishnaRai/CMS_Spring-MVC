@@ -105,4 +105,10 @@ public class AdminServicesIMPL implements AdminServices, UserDAO, LoginDAO, Rece
 		return AdminDaoIMPL.getSearchInfo(email);
 	}
 
+	@Override
+	public List<ReceiptDto> checkedSending(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

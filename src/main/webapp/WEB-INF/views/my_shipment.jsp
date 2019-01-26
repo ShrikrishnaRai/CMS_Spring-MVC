@@ -59,9 +59,48 @@
 			</table>
 		</c:if>
 	</div>
+
 	<div style="margin-right: 2%; margin-left: 2%;">
 		<c:if test="${!empty message}">
 			<c:out value="${message}"></c:out>
+		</c:if>
+	</div>
+	<div style="margin-left: 2%; margin-right: 2%">
+		<table>
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Receiver Email</th>
+					<th>Receiver Phone</th>
+					<th>Receiver FirstName</th>
+					<th>Receiver LastName</th>
+					<th>Receiver City</th>
+					<th>Receiver Country</th>
+					<th>Receive State</th>
+					<th>Goods</th>
+				</tr>
+			<tbody>
+				<c:forEach items="sent" var="sent">
+					<tr>
+						<td><c:out value="${sent.id }"></c:out></td>
+						<td><c:out value="${sent.receiverEmail }"></c:out></td>
+						<td><c:out value="${sent.receiverPhone }"></c:out></td>
+						<td><c:out value="${sent.receiverFirstname }"></c:out></td>
+						<td><c:out value="${sent.receiverLastname }"></c:out></td>
+						<td><c:out value="${sent.receiverCity }"></c:out></td>
+						<td><c:out value="${sent.receiverCountry }"></c:out></td>
+						<td><c:out value="${sent.receiverState }"></c:out></td>
+						<td><c:out value="${sent.goods }"></c:out></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+
+			</thead>
+		</table>
+	</div>
+	<div style="margin-right: 2%; margin-left: 2%;">
+		<c:if test="${!empty sentmessage}">
+			<c:out value="${sentmessage}"></c:out>
 		</c:if>
 	</div>
 </body>

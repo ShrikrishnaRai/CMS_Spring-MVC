@@ -8,6 +8,7 @@ package com.shree.containermgmt.Services.User;
 import com.shree.containermgmt.DAO.User.UserDAO;
 import com.shree.containermgmt.DAO.User.UserDaoIMPL;
 import com.shree.containermgmt.Model.LoggedInfo.LoggedInfo;
+import com.shree.containermgmt.Model.Receipt.ReceiptDto;
 import com.shree.containermgmt.Model.SignUp.SignUpDto;
 import com.shree.containermgmt.Model.User.UserDto;
 import java.util.ArrayList;
@@ -51,6 +52,11 @@ public class UserDaoServicesIMPL implements UserDAOServices {
 	@Override
 	public List<LoggedInfo> checkMine(String email) {
 		return UserDaoIMPL.checkedMine(email);
+	}
+
+	@Override
+	public List<ReceiptDto> checkedSending(String email) {
+		return UserDaoIMPL.checkedSending(email);
 	}
 
 }

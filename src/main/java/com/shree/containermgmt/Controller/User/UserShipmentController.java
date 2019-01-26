@@ -21,9 +21,14 @@ public class UserShipmentController {
 		if (userDaoServicesIMPL.checkMine(LoginController.username).size() > 0) {
 			model.addAttribute("user", userDaoServicesIMPL.checkMine(LoginController.username));
 			return PageURL.MY_SHIPMENT_REQUEST_PAGE;
+		} else if (userDaoServicesIMPL.checkedSending(LoginController.username).size() > 0) {
+			userDaoServicesIMPL.checkedSending(LoginController.username);
+			return PageURL.MY_SHIPMENT_REQUEST_PAGE;
 		} else {
 			model.addAttribute("message", "You don't have any receiving Request");
+			model.addAttribute("sentmessage", "You don't have any sent Request");
 			return PageURL.MY_SHIPMENT_REQUEST_PAGE;
 		}
 	}
+
 }

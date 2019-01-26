@@ -41,6 +41,7 @@ public class AdminController {
         	model.addAttribute("user", userDaoServicesIMPL.userInfo());
         	model.addAttribute("transaction",AdminServicesIMPL.getTransactionList());
         	return ADMIN_DASH_PAGE;
+        
         } else {
             model.addAttribute("message", "Admin Verification Failed");
 

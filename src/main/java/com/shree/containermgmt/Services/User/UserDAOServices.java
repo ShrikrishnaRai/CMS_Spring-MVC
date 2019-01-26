@@ -6,6 +6,7 @@
 package com.shree.containermgmt.Services.User;
 
 import com.shree.containermgmt.Model.LoggedInfo.LoggedInfo;
+import com.shree.containermgmt.Model.Receipt.ReceiptDto;
 import com.shree.containermgmt.Model.SignUp.SignUpDto;
 import com.shree.containermgmt.Model.User.UserDto;
 import java.util.ArrayList;
@@ -29,4 +30,9 @@ public interface UserDAOServices {
 
 	// checks logged users info on shipment
 	List<LoggedInfo> checkMine(String email);
+	
+    //check logged in users shipment as sender
+    List<ReceiptDto> checkedSending(String email);
+	
+	
 }

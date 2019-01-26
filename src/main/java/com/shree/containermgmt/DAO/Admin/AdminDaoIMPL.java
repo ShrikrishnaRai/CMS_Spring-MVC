@@ -150,4 +150,10 @@ public class AdminDaoIMPL implements AdminDao, UserDAO, LoginDAO {
 		return userDtoList;
 	}
 
+	@Override
+	public List<ReceiptDto> checkedSending(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

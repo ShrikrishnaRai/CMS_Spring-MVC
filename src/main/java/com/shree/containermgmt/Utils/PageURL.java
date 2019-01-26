@@ -17,4 +17,5 @@ public class PageURL {
 	public static final String ADMIN_PAGE = "admin.jsp";
 	public static final String ADMIN_DASH_PAGE = "admin_dash.jsp";
 	public static final String MY_SHIPMENT_REQUEST_PAGE = "my_shipment.jsp";
+	public static final String GLOBAL_ERROR_PAGE="error.jsp";
 }
